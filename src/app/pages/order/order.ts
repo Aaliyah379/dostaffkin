@@ -1,15 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { Header, UpperCasePipe } from '../../header/header';
+import { Header } from '../../header/header';
 import { DELIVERY_SIZES, DELIVERY_SPEEDS } from './order.config';
-import { FormGroup, Validators, FormBuilder } from "@angular/forms";
-
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UpperCasePipe } from '@angular/common';
 
 declare var ymaps: any;
 
 @Component({
   selector: 'app-order',
-  imports: [Header, UpperCasePipe],
-  templateUrl: './order.html',
+  imports: [Header, UpperCasePipe, ReactiveFormsModule],
+  templateUrl:'./order.html',
   styleUrl: './order.css',
 })
 export class Order {
