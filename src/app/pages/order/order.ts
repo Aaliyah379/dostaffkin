@@ -9,7 +9,7 @@ declare var ymaps: any;
 @Component({
   selector: 'app-order',
   imports: [Header, UpperCasePipe, ReactiveFormsModule],
-  templateUrl:'./order.html',
+  templateUrl: './order.html',
   styleUrl: './order.css',
 })
 export class Order {
@@ -26,7 +26,7 @@ export class Order {
   public calculationResult: any = signal(null);
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private deliveryApi: deliveryApi) {
     this.routeForm = this.formBuilder.group({
       from: ['', Validators.required],
       to: ['', Validators.required],
@@ -145,8 +145,15 @@ export class Order {
       createdAt: new Date().toISOString()
     };
 
-    console.log(payload);
-    this.orderId.set(1);
+    this.deliveryApi.createDelivery(payload).subscribe((response) => {
+      if ('error' in response) {
+        alert(response.error);
+        return;
+      }
+
+      this.orderId.set(response.id);
+    });
+
   }
 
 }
