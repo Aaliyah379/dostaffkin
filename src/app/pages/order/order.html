@@ -79,38 +79,39 @@
         </div>
         <div class="main-order-box">
             <div class="main-order-form" id="orderForm" [formGroup]="orderForm"
-                [style.display]="orderId() ? 'none' : null"></div>
-            <div class="main-order-title">Оформление доставки</div>
-            <div class="main-block-info-row">
-                <div class="main-block-title">Контакты</div>
-                <div class="order-fields">
-                    <div class="main-field">
-                        <input id="customerName" formControlName="name" placeholder="Ваше имя" autocomplete="off" />
-                    </div>
-                    <div class="main-field">
-                        <input id="customerPhone" formControlName="phone" placeholder="Ваш телефон" autocomplete="off"
-                            inputmode="tel" />
+                [style.display]="orderId() ? 'none' : null">
+                <div class="main-order-title">Оформление доставки</div>
+                <div class="main-block-info-row">
+                    <div class="main-block-title">Контакты</div>
+                    <div class="order-fields">
+                        <div class="main-field">
+                            <input id="customerName" formControlName="name" placeholder="Ваше имя" autocomplete="off" />
+                        </div>
+                        <div class="main-field">
+                            <input id="customerPhone" formControlName="phone" placeholder="Ваш телефон"
+                                autocomplete="off" inputmode="tel" />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="main-block-info-row extra-info">
-                <div class="main-block-title">Дополнительная информация</div>
-                <div class="main-field textarea">
-                    <textarea id="comment" formControlName="comment"
-                        placeholder="Детали доставки и комментарии"></textarea>
+                <div class="main-block-info-row extra-info">
+                    <div class="main-block-title">Дополнительная информация</div>
+                    <div class="main-field textarea">
+                        <textarea id="comment" formControlName="comment"
+                            placeholder="Детали доставки и комментарии"></textarea>
+                    </div>
                 </div>
+                <button id="submit" class="button main-submit-request" type="button"
+                    [disabled]="!calculationResult() || orderForm.invalid" (click)="submitOrder()">Отправить
+                    заявку
+                </button>
             </div>
-            <button id="submit" class="button main-submit-request" type="button"
-                [disabled]="!calculationResult() || orderForm.invalid" (click)="submitOrder()">Отправить
-                заявку
-            </button>
-        </div>
 
-        <div class="main-order-success" id="orderSuccess" [class.is-visible]="orderId()">
-            <div class="main-success-icon">✓</div>
-            <div class="main-success-title">Заявка отправлена!</div>
-            <div class="main-success-title">Номер отправления – <span id="orderId">{{orderId()}}</span></div>
-            <div class="main-success-subtitle">Мы скоро свяжемся с вами</div>
+            <div class="main-order-success" id="orderSuccess" [class.is-visible]="orderId()">
+                <div class="main-success-icon">✓</div>
+                <div class="main-success-title">Заявка отправлена!</div>
+                <div class="main-success-title">Номер отправления – <span id="orderId">{{orderId()}}</span></div>
+                <div class="main-success-subtitle">Мы скоро свяжемся с вами</div>
+            </div>
         </div>
     </div>
 
