@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { Header } from '../../header/header';
 import { FormsModule } from '@angular/forms';
+import { DeliveryApi } from '../../services/delivery-api';
 @Component({
   selector: 'app-track',
   imports: [Header, FormsModule],
@@ -11,7 +12,7 @@ export class Track {
   trackNumber = '';
   trackResult: any = signal(null);
 
-  constructor(private deliveryApi: deliveryApi) {}
+  constructor(private deliveryApi: DeliveryApi) { }
 
   trackShipment(): void {
     const rawValue = this.trackNumber.trim();
